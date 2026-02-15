@@ -1,0 +1,8 @@
+/*
+ * XPCollector dependencies
+ */
+
+dependencies {
+    // OpenModsLib is required for XPCollector - it provides TileEntity, GUI, and other utilities
+    api("com.github.GTNewHorizons:OpenModsLib:0.10.11:dev")
+}

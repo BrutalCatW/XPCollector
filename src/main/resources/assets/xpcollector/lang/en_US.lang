@@ -1,0 +1,15 @@
+# XPCollector Localization
+
+# GUI
+xpcollector.gui.xp_outputs=XP Outputs
+xpcollector.gui.item_outputs=Item Outputs
+xpcollector.gui.xpvacuum=XP Vacuum
+
+# Blocks
+tile.xpcollector.xpvacuum.name=XP Vacuum
+
+# Creative Tab
+itemGroup.xpcollector=XPCollector
+
+# Fluids
+fluid.xpcollector.xpjuice=Liquid XP

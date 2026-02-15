@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "xpcollector",
+    "name": "XPCollector",
+    "description": "A simple mod that adds XP Vacuum - a block that collects experience orbs and items. Based on VacuumHopper from OpenBlocks.",
+    "version": "${modVersion}",
+    "mcversion": "${minecraftVersion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["Based on OpenBlocks by OpenMods Team"],
+    "credits": "Original VacuumHopper concept from OpenBlocks mod",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": ["required-after:OpenMods@[0.10,)"]
+  }
+]
