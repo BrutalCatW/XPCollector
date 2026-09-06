@@ -2,3 +2,19 @@
 plugins {
     id 'com.gtnewhorizons.gtnhconvention'
 }
+
+// 🔴 Версия задаётся жёстко: git-версионирование convention-плагина
+//    (хеш+ветка+dirty в имени jar и в списке модов) нам не нужно.
+//
+//    Работает ТОЛЬКО в паре с `gtnh.modules.gitVersion = false`
+//    в gradle.properties — так предписывает сам плагин в тексте своей
+//    ошибки (GitVersionModule).
+//
+// ⚠️ Ключ именно modVersion, а не project.version: из extraProperties его
+//    лениво читают ДВА потребителя — имя jar и токен Tags.VERSION (версия
+//    в @Mod и в списке модов). Правка project.version меняет только первое.
+//
+// ⚠️ Не только косметика: у мода нет acceptableRemoteVersions, а git-версия
+//    менялась с каждым коммитом — клиентский и серверный jar из разных
+//    состояний репозитория давали разные версии, и FML не пускал игрока.
+project.ext.modVersion = '1.0'

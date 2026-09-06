@@ -1,5 +1,6 @@
 package com.github.xpcollector;
 
+import java.io.File;
 import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -88,8 +89,14 @@ public class XPCollector {
         // Register blocks using OpenMods system
         startupHelper.registerBlocksHolder(Blocks.class);
 
-        // OpenMods preInit
-        startupHelper.preInit(event.getSuggestedConfigurationFile());
+        // OpenMods preInit. Конфиг — config/BrutalCat/XPCollector.cfg.
+        //
+        // ⚠️ Не event.getSuggestedConfigurationFile(): тот жёстко даёт config/<modid>.cfg,
+        // то есть xpcollector.cfg. Все наши моды держат конфиги в одной папке
+        // и называют их по имени мода.
+        // ℹ️ ModStartupHelper.preInit(File) внутри делает new Configuration(file)
+        // (проверено по байт-коду OpenModsLib), а тот сам создаёт каталог.
+        startupHelper.preInit(new File(new File(event.getModConfigurationDirectory(), "BrutalCat"), "XPCollector.cfg"));
 
         // Register GUI handler through OpenMods
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, OpenMods.proxy.wrapHandler(null));
