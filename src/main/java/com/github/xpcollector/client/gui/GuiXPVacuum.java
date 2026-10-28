@@ -60,7 +60,7 @@ public class GuiXPVacuum extends SyncedGuiContainer<ContainerXPVacuum> {
             wireSideSelector(sideSelector, te.getReadableItemOutputs(), te.getWriteableItemOutputs());
 
             itemTab.addComponent(
-                    new GuiComponentLabel(24, 10, StatCollector.translateToLocal("openblocks.gui.item_outputs")));
+                    new GuiComponentLabel(24, 10, StatCollector.translateToLocal("xpcollector.gui.item_outputs")));
             itemTab.addComponent(sideSelector);
             tabs.addComponent(itemTab);
         }
@@ -75,7 +75,7 @@ public class GuiXPVacuum extends SyncedGuiContainer<ContainerXPVacuum> {
             wireSideSelector(sideSelector, te.getReadableXpOutputs(), te.getWriteableXpOutputs());
             xpTab.addComponent(sideSelector);
             xpTab.addComponent(
-                    new GuiComponentLabel(24, 10, StatCollector.translateToLocal("openblocks.gui.xp_outputs")));
+                    new GuiComponentLabel(24, 10, StatCollector.translateToLocal("xpcollector.gui.xp_outputs")));
             tabs.addComponent(xpTab);
         }
 

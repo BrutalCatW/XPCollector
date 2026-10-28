@@ -81,8 +81,6 @@ public class XPCollector {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LOGGER.info("XPCollector PreInit");
-
         // Register XP Juice fluid
         FluidRegistry.registerFluid(Fluids.xpJuice);
 
@@ -109,8 +107,6 @@ public class XPCollector {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        LOGGER.info("XPCollector Init");
-
         // Register recipes
         registerRecipes();
 
@@ -119,8 +115,6 @@ public class XPCollector {
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        LOGGER.info("XPCollector PostInit");
-
         proxy.postInit();
     }
 

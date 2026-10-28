@@ -1,0 +1,15 @@
+# XPCollector — русский перевод
+
+# Окно
+xpcollector.gui.xp_outputs=Выход опыта
+xpcollector.gui.item_outputs=Выход предметов
+xpcollector.gui.xpvacuum=Сборщик опыта
+
+# Блоки
+tile.xpcollector.xpvacuum.name=Сборщик опыта
+
+# Вкладка творческого режима
+itemGroup.xpcollector=XPCollector
+
+# Жидкости
+fluid.xpcollector.xpjuice=Жидкий опыт

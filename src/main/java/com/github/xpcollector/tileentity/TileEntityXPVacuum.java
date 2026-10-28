@@ -111,7 +111,8 @@ public class TileEntityXPVacuum extends SyncedTileEntity
             return ItemDistribution.testInventoryInsertion(inventory, stack) > 0;
         }
 
-        if (entity instanceof EntityXPOrb) return tank.getSpace() > 0;
+        // Шар опыта — только если в бак влезает хотя бы одно очко (иначе он висел бы у блока)
+        if (entity instanceof EntityXPOrb) return LiquidXpUtils.liquidToXpRatio(tank.getSpace()) > 0;
 
         return false;
     }
@@ -239,12 +240,19 @@ public class TileEntityXPVacuum extends SyncedTileEntity
                 }
                 return true;
             } else if (entity instanceof EntityXPOrb) {
-                if (tank.getSpace() > 0) {
-                    EntityXPOrb orb = (EntityXPOrb) entity;
-                    int xpAmount = LiquidXpUtils.xpToLiquidRatio(orb.getXpValue());
-                    FluidStack newFluid = new FluidStack(XPCollector.Fluids.xpJuice, xpAmount);
-                    tank.fill(newFluid, true);
+                // Поглощается сколько влезает в бак, остаток — новым шаром на том же месте (дождётся места).
+                // До 28.10.2026 шар поглощался целиком, и опыт сверх места в баке пропадал.
+                EntityXPOrb orb = (EntityXPOrb) entity;
+                int fit = LiquidXpUtils.liquidToXpRatio(tank.getSpace());
+                if (fit > 0) {
+                    int value = orb.getXpValue();
+                    int take = Math.min(fit, value);
+                    tank.fill(new FluidStack(XPCollector.Fluids.xpJuice, LiquidXpUtils.xpToLiquidRatio(take)), true);
                     entity.setDead();
+                    if (value > take) {
+                        worldObj.spawnEntityInWorld(
+                                new EntityXPOrb(worldObj, orb.posX, orb.posY, orb.posZ, value - take));
+                    }
                     return true;
                 }
             }
